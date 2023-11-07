@@ -13,14 +13,10 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node v${{ secrets.NODE_VERSION }}
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ secrets.NODE_VERSION }}
-
+          node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm run lint
 
@@ -28,31 +24,25 @@ jobs:
     name: Build bundle
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Setup Git
         run: |
           git config --global user.email "${{ github.actor }}"
           git config --global user.name "${{ github.repository_owner }}"
           git checkout -b release/${{ github.event.inputs.version }}
-
-      - name: Test and Build
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ secrets.NODE_VERSION }}
+          node-version-file: '.nvmrc'
       - run: |
           npm i -g @vercel/ncc
           npm install --production
           npm run build
-
       - name: Clean files
         run: |
           rm .gitignore
           rm -Rf node_modules/
           rm -Rf .github
           rm index.js
-
       - name: Git Create Branch release/${{ github.event.inputs.version }}
         run: |
           git add .
@@ -66,11 +56,9 @@ jobs:
     needs:
       - test
       - build
-
     steps:
       - name: Set Time
         run: echo "TIME=$(date --rfc-3339=date)" >> $GITHUB_ENV
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
