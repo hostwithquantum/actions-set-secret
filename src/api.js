@@ -11,7 +11,6 @@ module.exports = class Api {
    * @param {any} auth - Auth method
    * @param {string} repo - Repository in format username/repo-name
    * @param {boolean} org - Is a Organization
-   * @returns {Promise<{data: object}>} - Fetch response
    */
   constructor(auth, repo, org = false) {
     this.octokit = new Octokit({ auth })
@@ -41,7 +40,7 @@ module.exports = class Api {
    * @param {string} key - Secret key
    * @param {string} name - Secret name
    * @param {string} value - Secret value
-   * @returns {{key_id: string, encrypted_value: string}} - Secret data
+   * @returns {Promise<{key_id: string, encrypted_value: string}>} - Secret data
    */
   async createSecret(key_id, key, name, value) {
     const messageBytes = Buffer.from(value)
