@@ -46,7 +46,6 @@ const boostrap = async (api, secret_name, secret_value) => {
 
 
 try {
-  // `who-to-greet` input defined in action metadata file
   const name = Core.getInput('name')
   const value = Core.getInput('value')
   const repository = Core.getInput('repository')
