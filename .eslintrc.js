@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ['dist/'],
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module'
