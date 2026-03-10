@@ -19,7 +19,7 @@
     "@vercel/ncc": "^0.38.4",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-jsdoc": "^46.9.0",
-    "husky": "^4.2.5",
+    "husky": "^9.1.7",
     "lint-staged": "^16.3.3"
   },
   "husky": {
