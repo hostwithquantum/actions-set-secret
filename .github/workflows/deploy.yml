@@ -19,6 +19,7 @@ jobs:
           node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm run lint
+      - run: npm test
 
   build:
     name: Build bundle
