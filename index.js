@@ -4,7 +4,6 @@ const Api = require('./src/api')
 /**
  * Set secrets in Github repo
  * This actions is participating in #ActionsHackathon 2020
- *
  * @param {Api} api - Api instance
  * @param {string} secret_name - Secret key name
  * @param {string} secret_value - Secret raw value
