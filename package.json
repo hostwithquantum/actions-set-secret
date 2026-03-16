@@ -13,14 +13,14 @@
     "@actions/github": "^9.0.0",
     "@octokit/core": "^7.0.6",
     "eslint": "^7.6.0",
-    "libsodium-wrappers": "^0.7.15"
+    "libsodium-wrappers": "^0.8.2"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.4",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-jsdoc": "^46.9.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.3.3"
+    "lint-staged": "^16.4.0"
   },
   "husky": {
     "hooks": {
