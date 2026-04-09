@@ -1,0 +1,37 @@
+name: integration
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions: {}
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Generate token to update secrets
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+      - run: npm ci
+      - run: npm run build
+      - uses: ./
+        with:
+          name: INTEGRATION_TEST
+          value: ${{ github.run_id }}
+          token: ${{ steps.generate-token.outputs.token }}
+          org: true
