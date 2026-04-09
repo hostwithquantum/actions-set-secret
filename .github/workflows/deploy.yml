@@ -8,12 +8,18 @@ on:
         required: true
         default: '1.0.0'
 
+
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
@@ -24,8 +30,12 @@ jobs:
   build:
     name: Build bundle
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: true
       - name: Setup Git
         run: |
           git config --global user.email "${{ github.actor }}"
@@ -57,17 +67,18 @@ jobs:
       - build
     steps:
       - name: Set Time
-        run: echo "TIME=$(date --rfc-3339=date)" >> $GITHUB_ENV
+        id: set-time
+        run: echo "TIME=$(date --rfc-3339=date)" >> $GITHUB_OUTPUT
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v/${{ github.event.inputs.version }}
           release_name: v${{ github.event.inputs.version }}
           commitish: release/${{ github.event.inputs.version }}
           body: |
-            Created on ${{ env.TIME }} using automated Workflow by ${{ github.actor }}
+            Created on ${{ steps.set-time.outputs.TIME }} using automated Workflow by ${{ github.actor }}
           draft: false
           prerelease: false
