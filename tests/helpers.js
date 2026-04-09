@@ -1,5 +1,5 @@
-const { mock } = require('node:test')
-const sodium = require('libsodium-wrappers')
+import { mock } from 'node:test'
+import sodium from 'libsodium-wrappers'
 
 /** @typedef {import('../src/api')} Api */
 /** @typedef {import('@octokit/types').OctokitResponse<any>} OctokitResponse */
@@ -80,7 +80,7 @@ async function bootstrap(api, secretName, secretValue, core) {
   }
 }
 
-module.exports = {
+export {
   initTestKey,
   getTestPublicKey,
   mockOctokit,

@@ -1,7 +1,7 @@
-const { describe, it, before } = require('node:test')
-const assert = require('node:assert')
-const Api = require('../src/api')
-const { initTestKey, getTestPublicKey } = require('./helpers')
+import { describe, it, before } from 'node:test'
+import assert from 'node:assert'
+import Api from '../src/api.js'
+import { initTestKey, getTestPublicKey } from './helpers.js'
 
 before(async () => {
   await initTestKey()

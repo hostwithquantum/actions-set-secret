@@ -1,5 +1,5 @@
-const Core = require('@actions/core')
-const Api = require('./src/api')
+import * as Core from '@actions/core'
+import Api from './src/api.js'
 
 /**
  * Set secrets in Github repo

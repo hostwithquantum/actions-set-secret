@@ -17,6 +17,8 @@ updates:
       patterns:
         - "eslint"
         - "eslint-*"
+        - "@eslint/*"
+        - "@stylistic/*"
     npm:
       patterns:
         - "*"
