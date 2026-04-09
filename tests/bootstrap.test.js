@@ -1,7 +1,7 @@
-const { describe, it, mock, beforeEach, before } = require('node:test')
-const assert = require('node:assert')
-const Api = require('../src/api')
-const { initTestKey, mockOctokit, bootstrap } = require('./helpers')
+import { describe, it, mock, beforeEach, before } from 'node:test'
+import assert from 'node:assert'
+import Api from '../src/api.js'
+import { initTestKey, mockOctokit, bootstrap } from './helpers.js'
 
 before(async () => {
   await initTestKey()

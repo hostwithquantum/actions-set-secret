@@ -3,6 +3,7 @@
   "version": "2.0.1",
   "repository": "https://github.com/hostwithquantum/actions-set-secret",
   "license": "MIT License",
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
     "build": "ncc build index.js -o dist",

@@ -1,10 +1,10 @@
-const { Octokit } = require('@octokit/core')
-const sodium = require('libsodium-wrappers')
+import { Octokit } from '@octokit/core'
+import sodium from 'libsodium-wrappers'
 
 /**
  * @class Api
  */
-module.exports = class Api {
+export default class Api {
   /**
    * Generate public key to store secrets
    * @param {any} auth - Auth method

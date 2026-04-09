@@ -1,8 +1,8 @@
-const js = require('@eslint/js')
-const jsdoc = require('eslint-plugin-jsdoc')
-const stylistic = require('@stylistic/eslint-plugin-js')
+import js from '@eslint/js'
+import jsdoc from 'eslint-plugin-jsdoc'
+import stylistic from '@stylistic/eslint-plugin-js'
 
-module.exports = [
+export default [
   {
     ignores: ['dist/']
   },
@@ -14,7 +14,7 @@ module.exports = [
     },
     languageOptions: {
       ecmaVersion: 2017,
-      sourceType: 'commonjs',
+      sourceType: 'module',
       globals: {
         Buffer: 'readonly',
         console: 'readonly',
