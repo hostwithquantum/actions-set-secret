@@ -10,16 +10,16 @@
     "test": "node --test 'tests/**/*.test.js'"
   },
   "dependencies": {
-    "@actions/core": "^3.0.0",
-    "@actions/github": "^9.1.0",
+    "@actions/core": "^3.0.1",
+    "@actions/github": "^9.1.1",
     "@octokit/core": "^7.0.6",
-    "libsodium-wrappers": "^0.8.2"
+    "libsodium-wrappers": "^0.8.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin-js": "^4.4.1",
     "@vercel/ncc": "^0.38.4",
-    "eslint": "^10.2.0",
+    "eslint": "^10.4.0",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-jsdoc": "^62.9.0"
   },
