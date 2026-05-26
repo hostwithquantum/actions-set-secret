@@ -21,7 +21,7 @@
     "@vercel/ncc": "^0.38.4",
     "eslint": "^10.2.0",
     "eslint-config-strongloop": "^2.1.0",
-    "eslint-plugin-jsdoc": "^62.9.0"
+    "eslint-plugin-jsdoc": "^63.0.0"
   },
   "husky": {
     "hooks": {
